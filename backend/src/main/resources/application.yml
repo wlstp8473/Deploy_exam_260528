@@ -48,7 +48,9 @@ spring:
       client:
         registration:
           kakao:
-            clientId: ON_SECRET
+            client-id: e4a08ffd5a61b552bfafc3fdc0edd8cd
+            client-secret: O03rCHgkGGJHoKjIFgf05cBY3E25BQWU
+            client-authentication-method: client_secret_post
             scope: profile_nickname, profile_image
             client-name: Kakao
             authorization-grant-type: authorization_code
@@ -66,17 +68,19 @@ logging:
     org.hibernate.orm.jdbc.bind: TRACE
     org.hibernate.orm.jdbc.extract: TRACE
     org.springframework.transaction.interceptor: TRACE
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: TRACE
 
 springdoc:
   default-produces-media-type: application/json;charset=UTF-8
 
 
 custom:
-  appName: app4
+  appName: testApp
   prod:
-    domain: qwas.shop
-    backUrl: "https://api.${custom.appName}.${custom.prod.domain}"
-    frontUrl: "https://www.${custom.appName}.${custom.prod.domain}"
+    domain: test-app.shop
+    backUrl: "https://api.${custom.prod.domain}"
+    frontUrl: "https://www.${custom.prod.domain}"
 
   dev:
     domain: localhost
@@ -84,9 +88,9 @@ custom:
     frontUrl: "http://${custom.dev.domain}:3000"
 
   site:
-    domain: "${custom.prod.domain}"
-    backUrl: "${custom.prod.backUrl}"
-    frontUrl: "${custom.prod.frontUrl}"
+    domain: "${custom.dev.domain}"
+    backUrl: "${custom.dev.backUrl}"
+    frontUrl: "${custom.dev.frontUrl}"
 
   jwt:
     expire-seconds: "#{60 * 30}"
