@@ -8,13 +8,14 @@ import ProfileMenu from "./ProfileMenu";
 
 export default function WideHeader({ className }: { className: string }) {
   const { isLogin } = use(LoginMemberContext);
+  const kakaoLoginUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/oauth2/authorization/kakao?redirectUrl=${process.env.NEXT_PUBLIC_API_FRONT_URL}`;
 
   return (
     <div className={className}>
       {!isLogin && (
         <a
           className="flex gap-2"
-          href="http://localhost:8080/oauth2/authorization/kakao?redirectUrl=http://localhost:3000"
+          href={kakaoLoginUrl}
         >
           <MessageCircle />
           <p>카카오 로그인</p>
